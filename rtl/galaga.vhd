@@ -1240,7 +1240,8 @@ generic map
     ADDR_WIDTH   => 14,
     DATA_WIDTH   => 8,
     ROM_PRELOAD  => true,
-    ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_cpu1_mws1.hex",
+    --ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_cpu1_mws1.hex",
+    ROM_FILE     => "../../CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_cpu1_mws1.hex",
     ROM_FILE_HEX => true
 )
 port map
