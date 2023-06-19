@@ -1099,11 +1099,11 @@ cs51xx_prog : entity work.dualport_2clk_ram
 generic map 
 (
     ADDR_WIDTH   => 10,
-    DATA_WIDTH   => 8,
-    ROM_PRELOAD  => true,
-    --ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/mcu_51xx_mws1.hex",
-    ROM_FILE     => "../../CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/mcu_51xx_mws1.hex",
-    ROM_FILE_HEX => true
+    DATA_WIDTH   => 8
+--    ROM_PRELOAD  => true,
+--    --ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/mcu_51xx_mws1.hex",
+--    ROM_FILE     => "../../CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/mcu_51xx_mws1.hex",
+--    ROM_FILE_HEX => true
    
 )
 port map
@@ -1158,11 +1158,11 @@ cs54xx_prog : entity work.dualport_2clk_ram
 generic map 
 (
     ADDR_WIDTH   => 10,
-    DATA_WIDTH   => 8,
-    ROM_PRELOAD  => true,
-    --ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/mcu_54xx_mws1.hex",
-    ROM_FILE     => "../../CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/mcu_54xx_mws1.hex",
-    ROM_FILE_HEX => true
+    DATA_WIDTH   => 8
+--    ROM_PRELOAD  => true,
+--    --ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/mcu_54xx_mws1.hex",
+--    ROM_FILE     => "../../CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/mcu_54xx_mws1.hex",
+--    ROM_FILE_HEX => true
    
 )
 port map
@@ -1227,24 +1227,24 @@ port map(
 	audio_out  => cs54xx_audio_3_lpf
 );
 
-rom1_cs <= '1' when dn_addr(15 downto 14) = "00"     else '0';
-rom2_cs <= '1' when dn_addr(15 downto 12) = "0100"   else '0';
-rom3_cs <= '1' when dn_addr(15 downto 12) = "0101"   else '0';
-roms_cs <= '1' when dn_addr(15 downto 13) = "011"    else '0';
-romb_cs <= '1' when dn_addr(15 downto 13) = "100"    else '0';
-rom51_cs <= '1' when dn_addr(15 downto 10) = "101000" else '0';
-rom54_cs <= '1' when dn_addr(15 downto 10) = "101001" else '0';
+rom1_cs  <= '1' when dn_addr(15 downto 14) = "00"     else '0'; -- 16k
+rom2_cs  <= '1' when dn_addr(15 downto 12) = "0100"   else '0'; -- 4k
+rom3_cs  <= '1' when dn_addr(15 downto 12) = "0101"   else '0'; -- 4k
+roms_cs  <= '1' when dn_addr(15 downto 13) = "011"    else '0'; -- 8k
+romb_cs  <= '1' when dn_addr(15 downto 13) = "100"    else '0'; -- 8k
+rom51_cs <= '1' when dn_addr(15 downto 10) = "101000" else '0'; -- 1k
+rom54_cs <= '1' when dn_addr(15 downto 10) = "101001" else '0'; -- 1k
 
 -- cpu1 program ROM
 rom_cpu1 : entity work.dualport_2clk_ram  
 generic map 
 (
     ADDR_WIDTH   => 14,
-    DATA_WIDTH   => 8,
-    ROM_PRELOAD  => true,
-    --ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_cpu1_mws1.hex",
-    ROM_FILE     => "../../CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_cpu1_mws1.hex",
-    ROM_FILE_HEX => true
+    DATA_WIDTH   => 8
+--    ROM_PRELOAD  => true,
+--    --ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_cpu1_mws1.hex",
+--    ROM_FILE     => "../../CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_cpu1_mws1.hex",
+--    ROM_FILE_HEX => true
 )
 port map
 (
@@ -1263,11 +1263,11 @@ rom_cpu2 : entity work.dualport_2clk_ram
 generic map 
 (
     ADDR_WIDTH   => 12,
-    DATA_WIDTH   => 8,
-    ROM_PRELOAD  => true,
-    --ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_cpu2_mws1.hex",
-    ROM_FILE     => "../../CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_cpu2_mws1.hex",
-    ROM_FILE_HEX => true
+    DATA_WIDTH   => 8
+--    ROM_PRELOAD  => true,
+--    --ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_cpu2_mws1.hex",
+--    ROM_FILE     => "../../CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_cpu2_mws1.hex",
+--    ROM_FILE_HEX => true
 )
 port map
 (
@@ -1286,11 +1286,11 @@ rom_cpu3 : entity work.dualport_2clk_ram
 generic map 
 (
     ADDR_WIDTH   => 12,
-    DATA_WIDTH   => 8,
-    ROM_PRELOAD  => true,
-    --ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_cpu3_mws1.hex",
-    ROM_FILE     => "../../CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_cpu3_mws1.hex",
-    ROM_FILE_HEX => true
+    DATA_WIDTH   => 8
+--    ROM_PRELOAD  => true,
+--    --ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_cpu3_mws1.hex",
+--    ROM_FILE     => "../../CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_cpu3_mws1.hex",
+--    ROM_FILE_HEX => true
    
 )
 port map
@@ -1310,11 +1310,11 @@ bg_graphics : entity work.dualport_2clk_ram
 generic map 
 (
     ADDR_WIDTH   => 13,
-    DATA_WIDTH   => 8,
-    ROM_PRELOAD  => true,
-    --ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_gfx1_mws1.hex",
-    ROM_FILE     => "../../CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_gfx1_mws1.hex",
-    ROM_FILE_HEX => true
+    DATA_WIDTH   => 8
+--    ROM_PRELOAD  => true,
+--    --ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_gfx1_mws1.hex",
+--    ROM_FILE     => "../../CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_gfx1_mws1.hex",
+--    ROM_FILE_HEX => true
    
 )
 port map
@@ -1424,11 +1424,11 @@ sp_graphics : entity work.dualport_2clk_ram
 generic map 
 (
     ADDR_WIDTH   => 13,
-    DATA_WIDTH   => 8,
-    ROM_PRELOAD  => true,
-    --ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_gfx2_mws1.hex",
-    ROM_FILE     => "../../CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_gfx2_mws1.hex",
-    ROM_FILE_HEX => true
+    DATA_WIDTH   => 8
+--    ROM_PRELOAD  => true,
+--    --ROM_FILE     => "/home/shoestring/GalagaMEGA65/CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_gfx2_mws1.hex",
+--    ROM_FILE     => "../../CORE/Arcade-Galaga_MiSTer/rtl/roms/MidwaySet1/rom_gfx2_mws1.hex",
+--    ROM_FILE_HEX => true
    
 )
 
