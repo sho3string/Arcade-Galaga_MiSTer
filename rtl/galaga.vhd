@@ -141,6 +141,7 @@ port(
 	dip_switch_a   : in std_logic_vector (7 downto 0);
 	dip_switch_b   : in std_logic_vector (7 downto 0);
 
+   dn_clk         : in  std_logic;
 	dn_addr        : in  std_logic_vector(15 downto 0);
 	dn_data        : in  std_logic_vector(7 downto 0);
 	dn_wr          : in  std_logic;
@@ -1098,6 +1099,7 @@ port map(
 cs51xx_prog : entity work.dualport_2clk_ram
 generic map 
 (
+    FALLING_A    => true,
     ADDR_WIDTH   => 10,
     DATA_WIDTH   => 8
 --    ROM_PRELOAD  => true,
@@ -1108,7 +1110,7 @@ generic map
 )
 port map
 (
-	clock_a   => clock_18,
+	clock_a   => dn_clk,
 	wren_a    => dn_wr and rom51_cs,
 	address_a => dn_addr(9 downto 0),
 	data_a    => dn_data,
@@ -1157,6 +1159,7 @@ port map(
 cs54xx_prog : entity work.dualport_2clk_ram
 generic map 
 (
+    FALLING_A    => true,
     ADDR_WIDTH   => 10,
     DATA_WIDTH   => 8
 --    ROM_PRELOAD  => true,
@@ -1167,7 +1170,7 @@ generic map
 )
 port map
 (
-	clock_a   => clock_18,
+	clock_a   => dn_clk,
 	wren_a    => dn_wr and rom54_cs,
 	address_a => dn_addr(9 downto 0),
 	data_a    => dn_data,
@@ -1239,6 +1242,7 @@ rom54_cs <= '1' when dn_addr(15 downto 10) = "101001" else '0'; -- 1k
 rom_cpu1 : entity work.dualport_2clk_ram  
 generic map 
 (
+    FALLING_A    => true,
     ADDR_WIDTH   => 14,
     DATA_WIDTH   => 8
 --    ROM_PRELOAD  => true,
@@ -1248,7 +1252,7 @@ generic map
 )
 port map
 (
-	clock_a   => clock_18,
+	clock_a   => dn_clk,
 	wren_a    => dn_wr and rom1_cs,
 	address_a => dn_addr(13 downto 0),
 	data_a    => dn_data,
@@ -1262,6 +1266,7 @@ port map
 rom_cpu2 : entity work.dualport_2clk_ram 
 generic map 
 (
+    FALLING_A    => true,
     ADDR_WIDTH   => 12,
     DATA_WIDTH   => 8
 --    ROM_PRELOAD  => true,
@@ -1271,7 +1276,7 @@ generic map
 )
 port map
 (
-	clock_a   => clock_18,
+	clock_a   => dn_clk,
 	wren_a    => dn_wr and rom2_cs,
 	address_a => dn_addr(11 downto 0),
 	data_a    => dn_data,
@@ -1285,6 +1290,7 @@ port map
 rom_cpu3 : entity work.dualport_2clk_ram 
 generic map 
 (
+    FALLING_A    => true,
     ADDR_WIDTH   => 12,
     DATA_WIDTH   => 8
 --    ROM_PRELOAD  => true,
@@ -1295,7 +1301,7 @@ generic map
 )
 port map
 (
-	clock_a   => clock_18,
+	clock_a   => dn_clk,
 	wren_a    => dn_wr and rom3_cs,
 	address_a => dn_addr(11 downto 0),
 	data_a    => dn_data,
@@ -1309,6 +1315,7 @@ port map
 bg_graphics : entity work.dualport_2clk_ram
 generic map 
 (
+    FALLING_A    => true,
     ADDR_WIDTH   => 13,
     DATA_WIDTH   => 8
 --    ROM_PRELOAD  => true,
@@ -1319,7 +1326,7 @@ generic map
 )
 port map
 (
-	clock_a   => clock_18,
+	clock_a   => dn_clk,
 	wren_a    => dn_wr and romb_cs,
 	address_a => dn_addr(12 downto 0),
 	data_a    => dn_data,
@@ -1423,6 +1430,7 @@ port map(
 sp_graphics : entity work.dualport_2clk_ram
 generic map 
 (
+    FALLING_A    => true,
     ADDR_WIDTH   => 13,
     DATA_WIDTH   => 8
 --    ROM_PRELOAD  => true,
@@ -1434,7 +1442,7 @@ generic map
 
 port map
 (
-	clock_a   => clock_18,
+	clock_a   => dn_clk,
 	wren_a    => dn_wr and roms_cs,
 	address_a => dn_addr(12 downto 0),
 	data_a    => dn_data,
